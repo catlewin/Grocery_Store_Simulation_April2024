@@ -1,0 +1,8 @@
+# ninja log v6
+4	901	1734366842543919946	CMakeFiles/Grocery_Store_Simulation_April2024.dir/main.cpp.o	d5acb5a1c8816314
+4	744	1734366842544462120	CMakeFiles/Grocery_Store_Simulation_April2024.dir/LinkedList.cpp.o	f4b6ea5e07aeaa2b
+5	763	1734366842544827813	CMakeFiles/Grocery_Store_Simulation_April2024.dir/function.cpp.o	5513db612054ec78
+4	751	1734367612407555744	CMakeFiles/Grocery_Store_Simulation_April2024.dir/Queue.cpp.o	c6bef6c4d6be9319
+4	755	1734367612407306850	CMakeFiles/Grocery_Store_Simulation_April2024.dir/function.cpp.o	5513db612054ec78
+3	880	1734367612406909815	CMakeFiles/Grocery_Store_Simulation_April2024.dir/main.cpp.o	d5acb5a1c8816314
+880	953	1734367613283630880	Grocery_Store_Simulation_April2024	bf0bc41b136df2d2

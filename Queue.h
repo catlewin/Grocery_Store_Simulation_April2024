@@ -38,7 +38,7 @@ public:
     void deQueue();
     queueNodeData peek();
     bool queueEmpty();
-    void printQueue();
+    void printQueue() const;
     //queueData struct
     queueData laneInfo;
 };

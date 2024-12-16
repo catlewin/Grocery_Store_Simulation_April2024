@@ -14,7 +14,7 @@ void enterCheckOutLane(vector<Queue> &AllLanes, dataType customerEnteringQ,int i
         }
     }
     // CREATE queueNodeData temp, assign customer's item # & increase lane item count
-    queueNodeData temp;
+    queueNodeData temp{};
     temp.itemCount = customerEnteringQ.itemCount;
     AllLanes[shortestIndex].laneInfo.currItems += temp.itemCount;
 
@@ -25,7 +25,7 @@ void enterCheckOutLane(vector<Queue> &AllLanes, dataType customerEnteringQ,int i
     }
         // ELSE ASSIGN checkout length + current min
     else {
-        temp.timeDQ = (AllLanes[shortestIndex].laneInfo.currItems * .15) + i;
+        temp.timeDQ = static_cast<int>(AllLanes[shortestIndex].laneInfo.currItems * .15) + i;
     }
 
     // INCREASE lane totalItems, queueCount, & totalCostumers
@@ -40,19 +40,19 @@ void enterCheckOutLane(vector<Queue> &AllLanes, dataType customerEnteringQ,int i
 void exitCheckOutLane(vector<Queue> &AllLanes, int i) {
     // DEQUEUES CUSTOMER FROM QUEUE & CALCULATES IDLE TIME
 
-    for (int c = 0; c < AllLanes.size(); c++) {
+    for (auto & AllLane : AllLanes) {
         // INCREMENTS idleTime if Q empty & during store hours
-        if (AllLanes[c].queueEmpty() && i <= 719) {
-            AllLanes[c].laneInfo.totalIdleTime++;
+        if (AllLane.queueEmpty() && i <= 719) {
+            AllLane.laneInfo.totalIdleTime++;
         }
         // DEQUEUES head Customer if current time >= customer DQ time
-        while (!(AllLanes[c].queueEmpty()) && i >= AllLanes[c].peek().timeDQ) {
-            // REMOVES heas customer items
-            AllLanes[c].laneInfo.currItems -= AllLanes[c].peek().itemCount;
+        while (!(AllLane.queueEmpty()) && i >= AllLane.peek().timeDQ) {
+            // REMOVES head customer items
+            AllLane.laneInfo.currItems -= AllLane.peek().itemCount;
             // DQ customer
-            AllLanes[c].deQueue();
+            AllLane.deQueue();
             // DECREMENT Q count
-            AllLanes[c].laneInfo.queueCount--;
+            AllLane.laneInfo.queueCount--;
         }
     }
 }
@@ -80,7 +80,7 @@ void runStore(Linked &Customerlist, vector<Queue> &AllLanes) {
             }
 
             // CREATE tempCustomer, ASSIGN itemCount & enterQTime
-            dataType tempCustomer;
+            dataType tempCustomer{};
             tempCustomer.itemCount = items;
             tempCustomer.enterQTime = (shopTime * items) / 60 + i;
 
@@ -98,7 +98,7 @@ void runStore(Linked &Customerlist, vector<Queue> &AllLanes) {
 
         // MOVE headCustomer from list to queue if i == enterQTime
         while (i == Customerlist.peek().enterQTime) {
-            dataType customerEnteringQ;
+            dataType customerEnteringQ{};
             customerEnteringQ = Customerlist.peek();
             enterCheckOutLane(AllLanes, customerEnteringQ, i);
             // DELETE customer from linkedList
@@ -106,14 +106,14 @@ void runStore(Linked &Customerlist, vector<Queue> &AllLanes) {
         }
 
         // REASSIGN maxQLength if current length > max
-        for (int j = 0; j < AllLanes.size(); j++) {
+        for (auto & AllLane : AllLanes) {
             // IF QUEUE NOT EMPTY
-            if (!AllLanes[j].queueEmpty()) {
+            if (!AllLane.queueEmpty()) {
                 // IF CURRENT # CUSTOMERS IN QUEUE > MAX Q
-                if (AllLanes[j].laneInfo.queueCount >
-                    AllLanes[j].laneInfo.maxQueueLength) {
+                if (AllLane.laneInfo.queueCount >
+                    AllLane.laneInfo.maxQueueLength) {
                     // REASSIGN MAX
-                    AllLanes[j].laneInfo.maxQueueLength = AllLanes[j].laneInfo.queueCount;
+                    AllLane.laneInfo.maxQueueLength = AllLane.laneInfo.queueCount;
                 }
             }
         }
@@ -132,7 +132,7 @@ void overtime(Linked &Customerlist, vector<Queue> &AllLanes) {
         // CUSTOMERS enterQ
         while (!Customerlist.listIsEmpty() &&
                currentMin == Customerlist.peek().enterQTime) {
-            dataType customerEnteringQ;
+            dataType customerEnteringQ{};
             customerEnteringQ = Customerlist.peek();
             enterCheckOutLane(AllLanes, customerEnteringQ, currentMin);
             // DELETE customer from list
@@ -141,9 +141,9 @@ void overtime(Linked &Customerlist, vector<Queue> &AllLanes) {
         // INCREMENT MIN
         currentMin++;
         // INCREMENT totalOverTime IF queue NOT empty
-        for (int i = 0; i < AllLanes.size(); i++) {
-            if (!AllLanes[i].queueEmpty()) {
-                AllLanes[i].laneInfo.totalOverTime++;
+        for (auto & AllLane : AllLanes) {
+            if (!AllLane.queueEmpty()) {
+                AllLane.laneInfo.totalOverTime++;
             }
         }
     }
@@ -155,21 +155,21 @@ void overtime(Linked &Customerlist, vector<Queue> &AllLanes) {
         // INCREMENT min
         currentMin++;
         // INCREMENT totalOverTime IF queue NOT empty
-        for (int i = 0; i < AllLanes.size(); i++) {
-            if (!AllLanes[i].queueEmpty()) {
-                AllLanes[i].laneInfo.totalOverTime++;
+        for (auto & AllLane : AllLanes) {
+            if (!AllLane.queueEmpty()) {
+                AllLane.laneInfo.totalOverTime++;
             }
         }
         // CHECK IF PEOPLE STILL IN STORE
         bool peopleInStore = false;
-        for (int i = 0; i < AllLanes.size(); i++) {
-            if (!AllLanes[i].queueEmpty()) {
+        for (auto & AllLane : AllLanes) {
+            if (!AllLane.queueEmpty()) {
                 peopleInStore = true;
                 break;
             }
         }
         // IF store empty, BREAK from iteration
-        if (peopleInStore == false) {
+        if (!peopleInStore) {
             break;
         }
     }

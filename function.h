@@ -9,12 +9,12 @@ using namespace std;
 //POST: While store open, each min randomly generate customer item # & shopping 
 //      time, then assign enterQ time. At enterQ time, remove from list & add 
 //      to queue. Remove from q at DQ time. Calculate maxqueue length. 
-//      After store close, run overtime to checkout remaining customers.
+//      After store close, run overtime to check out remaining customers.
 void runStore(Linked &Customerlist, vector <Queue> &AllLanes);
 
 //PRE:  CustomerEnterQ time == i, vector of queues created
 //POST: Finds shortest Queue, creates temp queueNode, assigns 
-//      items & DQtime, adds to Queue, & increments lane totalItems, 
+//      items & DQtime, adds to Queue, & increments lane totalItems,
 //      queueCount, & totalCostumers
 void enterCheckOutLane(vector <Queue> &AllLanes, dataType customerEnteringQ, int i);
 

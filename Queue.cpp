@@ -23,7 +23,7 @@ Queue::~Queue() {
 
 //adds element to the end of the Queue
 void Queue::enQueue(queueNodeData d) {
-    queueNode *newQueueNode = new queueNode;
+    auto *newQueueNode = new queueNode;
     newQueueNode->data = d;
     newQueueNode->nextPtr = nullptr;
     if (front == nullptr) {
@@ -58,7 +58,7 @@ bool Queue::queueEmpty() {
 }
 
 //outputs the Queue information / required information
-void Queue::printQueue(){
+void Queue::printQueue() const{
     cout << "\tTotal Customers Helped:  " << setw(5) << laneInfo.totalCustomers << endl;
     cout << "\tTotal Number of Items:   " << setw(5) << laneInfo.totalItems << endl;
     cout << "\tMax Line Length:         " << setw(5) << laneInfo.maxQueueLength << endl;

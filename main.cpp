@@ -1,4 +1,5 @@
-// NAMES: SHREE, ELIAS, CAT
+// NAMES: Shree, Elias, Cat
+// COURSE: CS201 Problem Solving & Programming II
 
 // PEOPLE WERE STUCK IN QUEUE, current min > head queue's exit time
 // OUR SOLUTION: CHECK if current min >= head queue's exit time
@@ -23,25 +24,25 @@ int main() {
             cout << "Can not exceed 10" << endl;
         }
         else if (numQ < 1) {
-            cout << "Can not be less than 1" << endl;
+            cout << "Cannot be less than 1" << endl;
         }
     }
 
-    // CREATE Linked List Customerlist & vector of Queues AllLanes
-    Linked Customerlist;
-    vector<Queue> AllLanes;
+    // CREATE Linked List Customers & vector of Queues AllLanes
+    Linked Customers;
+    vector<Queue> Lanes;
     for (int i = 0; i < numQ; i++) {
         Queue checkoutLane;
-        AllLanes.push_back(checkoutLane);
+        Lanes.push_back(checkoutLane);
     }
 
     // FUNCTION runs simulation with user defined numQ
-    runStore(Customerlist, AllLanes);
+    runStore(Customers, Lanes);
 
     // DISPLAY Queue Data
-    for (int i = 0; i < AllLanes.size(); i++) {
+    for (int i = 0; i < Lanes.size(); i++) {
         cout << "\n\n************* LANE " << i << " ****************\n";
-        AllLanes[i].printQueue();
+        Lanes[i].printQueue();
         cout << "\n\n--------------------------------------\n" << endl;
     }
 }

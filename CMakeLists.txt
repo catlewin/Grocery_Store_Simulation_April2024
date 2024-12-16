@@ -3,4 +3,7 @@ project(Grocery_Store_Simulation_April2024)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(Grocery_Store_Simulation_April2024 main.cpp)
+add_executable(Grocery_Store_Simulation_April2024 main.cpp
+        LinkedList.cpp
+        function.cpp
+        Queue.cpp)
