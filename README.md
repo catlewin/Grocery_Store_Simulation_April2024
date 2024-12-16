@@ -1,4 +1,13 @@
 # Grocery_Store_Simulation_April2024
+This project simulates a grocery store with the goal of finding the best number of cashiers to minimize idle time (not checking out a customer) & overtime (paying workers after store closes). The program was developed with 2 classmates, Elias & Shree over the month of April.
+
+**Project Requirements:**
+- Store is open from 9am - 9pm (720 minutes)
+- Every minute, 1-3 customers enter the store
+    - Number of items added to cart is assigned
+    - Each item takes 30-60 seconds to find
+- Once the customer is done shopping, they must checkout
+- If customers are in store after the store closes, cashiers must be paid overtime
 
 
 
