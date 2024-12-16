@@ -1,5 +1,5 @@
 # Grocery_Store_Simulation_April2024
-This project simulates a grocery store to optimize the number of cashiers, minimizing idle time and overtime by using linked lists for shoppers and a queue for checkout lanes. The program was developed with 2 classmates, Elias & Shree over the month of April. Though the project was originally created on replit, I imported the project to github using clion.
+This project simulates a grocery store to optimize the number of cashiers, minimizing idle time and overtime by using linked lists for shoppers and a queue for checkout lanes. The program was developed with 2 classmates, Elias & Shree in April, 2024. Though the project was originally created on replit, I imported the project to github using clion.
 
 **Project Requirements:**
 - Store is open from 9am - 9pm (720 minutes)
